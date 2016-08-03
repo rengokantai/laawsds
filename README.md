@@ -15,3 +15,17 @@ aws firehose put-record-batch --delivery-stream-name ke --record a b c --region 
 wait 5 min.
 ######using kinesis in streaming solutions
 workflow: s3->lambda for extract->kinesis->lambda for transform->kinesis->kinesis firehose->redshift
+
+#####6 Develop AWS IoT Project
+######Use AWS IoT MQTT
+step1: Device gateway connection:  
+IOT->MQTT Client->create connectionID:ke,  
+step2: subscribe to topic  
+subsciption topic: \topic\today->  
+max message capture:100->  
+qos:0  
+step3: publish to topic  
+publish topic: \topic\today ->  
+payload: ke
+
+######Use IOT certificates and policies to secure device messages
