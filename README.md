@@ -83,9 +83,18 @@ gzip compupdate region 'us-west-2';
 ####08:20
 clusters->last but 2 tab loads->check loads
 
+###5 Run a baseline query
+####00:20
+In order for Redshift to work properly, you need to understand how the data should be best loaded. There's a couple of considerations, one's called "Distribution style" and what that means is how the data will be copied or split across partitions. Of course, we set up a single cluster, so this is a frequent consideration in production workloads.  
 
-
-
+baseline query
+```
+select stv_tbl_perm as table, count(*) as mb from stv_blocklist, stv_tbl_perm 
+where stv_blocklist.tbl = stv.tbl.prm.id and and stv_blocklist.slice = stv_tbl_perm.slice 
+and stv_tbl_perm.name in ('tb1','tb2')
+group by stv_tbl_perm.name
+order by 1 asc;
+```
 
 
 
