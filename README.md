@@ -54,7 +54,34 @@ Def:
 - OLAP (On-line Analytical Processing) is characterized by relatively low volume of transactions. Queries are often very complex and involve aggregations. For OLAP systems a response time is an effectiveness measure. OLAP applications are widely used by Data Mining techniques. In OLAP database there is aggregated, historical data, stored in multi-dimensional schemas (usually star schema). 
 
 
+AWS big data options:  
+files -> S3, glacier  
+RDBMS -> Redshift(reads), Aurora(writes)  
+Hadoop ->EMR
 
+####05:17
+Databases that are optimized for inserts, updates and deletes are row-stores.
+####05:33
+Databases that are optimized for reading are very often now optimized in columns rather than rows. So common optimization technique for relational databases is indexes and indexes is just copying the information from one or more columns of the database. Column store really just executes on this fully in that every single value in the database is organized by columns.
+
+
+
+
+###3 Use Redshift
+####04:08
+Add sg:inbound rule:  
+Redshift->source:MyIP
+
+
+###4 Load your Redshift with data
+####05:27
+review syntax
+```
+copy tbname from 's3://bkname/a/tbname' credentials 'aws_access_key_id=AK123;aws_secret_access_key=123' 
+gzip compupdate region 'us-west-2';
+```
+####08:20
+clusters->last but 2 tab loads->check loads
 
 
 
